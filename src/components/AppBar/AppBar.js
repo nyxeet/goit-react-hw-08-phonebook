@@ -1,6 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import AuthNav from './AuthNav';
+import UserMenu from './UserMenu';
 import Navigation from './Navigation';
+import authSelectors from '../../redux/auth/auth-selectors';
 
 const styles = {
   header: {
@@ -11,11 +14,14 @@ const styles = {
   },
 };
 
-const AppBar = () => (
+const AppBar = ({ isAuthenticated }) => (
   <header style={styles.header}>
     <Navigation />
-    <AuthNav />
+    {isAuthenticated ? <UserMenu /> : <AuthNav />}
   </header>
 );
+const mapStateToProps = state => ({
+  isAuthenticated: authSelectors.getIsAuthenticated(state),
+});
 
-export default AppBar;
+export default connect(mapStateToProps)(AppBar);
