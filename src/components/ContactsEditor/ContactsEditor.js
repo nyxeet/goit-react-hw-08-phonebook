@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import contactsOperations from '../../redux/contacts/contacts-operations';
 import contactsSelectors from '../../redux/contacts/contacts-selectors';
-import './ContactsEditor.css';
+
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 class ContactsEditor extends Component {
   state = {
@@ -36,30 +39,43 @@ class ContactsEditor extends Component {
 
   render() {
     return (
-      <form className="TaskEditor" onSubmit={this.handleSubmit}>
-        <label className="TaskEditor-label">
-          Name
-          <input
-            className="TaskEditor-input"
+      <Form autoComplete="off" onSubmit={this.handleSubmit}>
+        <InputGroup className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text>Name</InputGroup.Text>
+          </InputGroup.Prepend>
+          <Form.Control
             type="text"
+            name="name"
+            placeholder="Enter name"
             value={this.state.text}
             onChange={this.handleChange}
           />
-        </label>
-        <label className="TaskEditor-label">
-          Tel
-          <input
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text>Number</InputGroup.Text>
+          </InputGroup.Prepend>
+          <Form.Control
             className="TaskEditor-input"
             type="tel"
+            name="number"
+            placeholder="Enter number"
             value={this.state.tel}
             onChange={this.handleTelChange}
           />
-        </label>
+        </InputGroup>
 
-        <button type="submit" className="TaskEditor-button">
+        <Button
+          variant="dark"
+          type="submit"
+          block
+          className="TaskEditor-button"
+        >
           Добавить контакт
-        </button>
-      </form>
+        </Button>
+      </Form>
     );
   }
 }

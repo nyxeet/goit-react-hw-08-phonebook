@@ -2,13 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import contactsActions from '../../redux/contacts/contacts-actions';
 import contactsSelectors from '../../redux/contacts/contacts-selectors';
+import Form from 'react-bootstrap/Form';
 
 const Filter = ({ value, changeFilter }) => (
-  <label>
-    Find contacts by name
-    <br />
-    <input type="text" value={value} onChange={changeFilter} />
-  </label>
+  <Form className="mb-2">
+    <Form.Group controlId="formBasicFilter">
+      <Form.Control
+        type="text"
+        name="filter"
+        placeholder="Filter..."
+        value={value}
+        onChange={changeFilter}
+        autoComplete="off"
+      />
+    </Form.Group>
+  </Form>
 );
 
 const mapStateToProps = state => ({
