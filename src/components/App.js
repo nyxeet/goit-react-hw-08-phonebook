@@ -26,18 +26,18 @@ class App extends Component {
             path="/register"
             restricted
             exact
-            redirectTo="/todos"
+            redirectTo="/contacts"
             component={RegisterView}
           ></PublicRoute>
           <PublicRoute
             path="/login"
             restricted
             exact
-            redirectTo="/todos"
+            redirectTo="/contacts"
             component={LoginView}
           ></PublicRoute>
           <PrivateRoute
-            path="/todos"
+            path="/contacts"
             redirectTo="/login"
             component={ContactsView}
           />
