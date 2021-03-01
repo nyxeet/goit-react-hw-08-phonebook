@@ -4,21 +4,20 @@ import AuthNav from './AuthNav';
 import UserMenu from './UserMenu';
 import Navigation from './Navigation';
 import authSelectors from '../../redux/auth/auth-selectors';
-
-const styles = {
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderBottom: '1px solid #2A363B',
-  },
-};
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
 
 const AppBar = ({ isAuthenticated }) => (
-  <header style={styles.header}>
-    <Navigation />
-    {isAuthenticated ? <UserMenu /> : <AuthNav />}
-  </header>
+  <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Container>
+      <Navbar.Brand>Phonebook App</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse>
+        <Navigation />
+        {isAuthenticated ? <UserMenu /> : <AuthNav />}
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>
 );
 const mapStateToProps = state => ({
   isAuthenticated: authSelectors.getIsAuthenticated(state),

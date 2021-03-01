@@ -2,27 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import authSelectors from '../../redux/auth/auth-selectors';
 import authOperations from '../../redux/auth/auth-operations';
-
-const styles = {
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  avatar: {
-    marginRight: 4,
-  },
-  name: {
-    fontWeight: 700,
-    marginRight: 12,
-  },
-};
+import Button from 'react-bootstrap/Button';
+import Navbar from 'react-bootstrap/Navbar';
 
 const UserMenu = ({ name, onLogout }) => (
-  <div style={styles.container}>
-    <span style={styles.name}>Welcome, {name}</span>
-    <button type="button" onClick={onLogout}>
+  <div>
+    <Navbar.Text className="mr-3">Welcome, {name} </Navbar.Text>
+    <Button variant="outline-info" type="button" onClick={onLogout}>
       Logout
-    </button>
+    </Button>
   </div>
 );
 const mapStateToProps = state => ({
