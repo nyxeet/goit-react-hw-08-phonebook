@@ -9,7 +9,7 @@ const UserMenu = ({ name, onLogout }) => (
   <div>
     <Navbar.Text className="mr-3">Welcome, {name} </Navbar.Text>
     <Button variant="outline-info" type="button" onClick={onLogout}>
-      Logout
+      Выйти
     </Button>
   </div>
 );
