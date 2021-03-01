@@ -41,7 +41,7 @@ const logIn = data => async dispatch => {
 const logOut = () => async dispatch => {
   dispatch(authActions.logoutRequest());
   try {
-    const response = await axios.post('/users/logout');
+    await axios.post('/users/logout');
 
     token.unset();
     dispatch(authActions.logoutSuccess());
@@ -69,10 +69,10 @@ const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(authActions.getCurrentUserError(error.message));
   }
 };
-
-export default {
+const authOperations = {
   register,
   logIn,
   logOut,
   getCurrentUser,
 };
+export default authOperations;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Layout from './Layout/Layout';
-import { Route } from 'react-router-dom';
 import AppBar from './AppBar/AppBar';
 import { Switch } from 'react-router-dom';
 import HomeView from '../views/HomeView';
