@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import authOperations from '../redux/auth/auth-operations';
 import Login from '../components/Login';
 
 import Container from 'react-bootstrap/Container';

@@ -1,28 +1,16 @@
 import React from 'react';
-
-const styles = {
-  container: {
-    minHeight: 'calc(100vh - 50px)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontWeight: 500,
-    fontSize: 48,
-    textAlign: 'center',
-  },
-};
+import Container from 'react-bootstrap/Container';
+import { NavLink } from 'react-router-dom';
 
 const HomeView = () => (
-  <div style={styles.container}>
-    <h1 style={styles.title}>
-      Приветственная страница нашего сервиса{' '}
-      <span role="img" aria-label="Иконка приветствия">
-        💁‍♀️
-      </span>
-    </h1>
-  </div>
+  <Container className="pt-4 text-center">
+    <h2 className="mb-5">Welcome</h2>
+    <p className="h5 mb-3">You can save your contacts with phone number</p>
+    <p className="h5">
+      To use this app, you must to <NavLink to="/login">Login</NavLink> or{' '}
+      <NavLink to="/register">Register</NavLink>
+    </p>
+  </Container>
 );
 
 export default HomeView;

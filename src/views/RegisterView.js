@@ -1,87 +1,20 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import authOperations from '../redux/auth/auth-operations';
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+import React from 'react';
 
-class RegisterView extends Component {
-  state = {
-    name: '',
-    email: '',
-    password: '',
-  };
+import Register from '../components/Register';
 
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
-  };
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-  handleSubmit = e => {
-    e.preventDefault();
+const RegisterView = () => (
+  <Container className="pt-4">
+    <Row lg={6} className="justify-content-center">
+      <Col lg={4}>
+        <h3 className="text-center">Register</h3>
+        <Register />
+      </Col>
+    </Row>
+  </Container>
+);
 
-    this.props.onRegister(this.state);
-
-    this.setState({ name: '', email: '', password: '' });
-  };
-
-  render() {
-    const { name, email, password } = this.state;
-
-    return (
-      <div>
-        <h1>Страница регистрации</h1>
-
-        <form
-          onSubmit={this.handleSubmit}
-          style={styles.form}
-          autoComplete="off"
-        >
-          <label style={styles.label}>
-            Имя
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <label style={styles.label}>
-            Почта
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <label style={styles.label}>
-            Пароль
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <button type="submit">Зарегистрироваться</button>
-        </form>
-      </div>
-    );
-  }
-}
-
-const mapDispatchToProps = {
-  onRegister: authOperations.register,
-};
-
-export default connect(null, mapDispatchToProps)(RegisterView);
+export default RegisterView;
